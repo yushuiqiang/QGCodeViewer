@@ -1,2 +1,4 @@
 # QGCodeViewer
-Qt5 widget which encapsulates QGLViewer with g2m canon functions to render gcode in openGL
+
+Qt5 QtDesigner widget and library, which encapsulates QGLViewer with g2m canon functions to render gcode in openGL
+
