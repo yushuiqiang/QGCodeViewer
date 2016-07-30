@@ -30,7 +30,7 @@ public:
     QString tooltable;
     QString gcodefile;
     
-    QGCodeEditor *gcode;
+    QGCodeEditor *gcode_editor;
     
 public slots:
     virtual void close();

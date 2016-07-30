@@ -62,15 +62,22 @@ void QGCodeViewer::clear()
     //updateGL();
 }
 
+/**
+GCodeViewer is designed to be used with a GCodeEditor widget to hold the
+.ngc code, a pointer to which is passed during initialisation.
+Then it can read directly from the editor and update the view rendered
+as each charactor is changed.
+ */
+
 void QGCodeViewer::changedGCode()
 {
-    if(gcode == NULL)
+    if(gcode_editor == NULL)
         {
-        qDebug() << "ERROR:  QGCodeViewer::gcode is not set";
+        qDebug() << "ERROR:  QGCodeViewer::gcode_editor is not set";
         return;
         }
         
-    if (gcode->toPlainText().isEmpty()) 
+    if (gcode_editor->toPlainText().isEmpty()) 
         {
         clear();
         return;
@@ -80,7 +87,7 @@ void QGCodeViewer::changedGCode()
     if(f.open( QIODevice::ReadWrite | QIODevice::Truncate | QIODevice::Text)) 
         {
         QTextStream out(&f);
-        out << gcode->toPlainText();
+        out << gcode_editor->toPlainText();
         f.close();
 
         clear();
